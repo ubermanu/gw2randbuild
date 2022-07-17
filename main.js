@@ -74,7 +74,7 @@ function skillOrder(skill) {
 
 export async function generate() {
     /**
-     * @type {{id,specializations:[],weapons:[],skills:[]}}
+     * @type {{id,icon,specializations:[],weapons:[],skills:[]}}
      */
     const professionData = _.sample(await getDetailedProfessions());
     console.log(professionData)
@@ -161,7 +161,7 @@ export async function generate() {
     }
 
     return {
-        'Profession': '<b>' + profession + '</b>',
+        'Profession': `<img src="${professionData.icon}" width="24" height="24" alt> <b>${profession}</b>`,
         'Specialization 1': specialization_1.name,
         'Trait 1-1': trait_1.name + ' <small>(' + skillOrder(trait_1) + ')</small>',
         'Trait 1-2': trait_2.name + ' <small>(' + skillOrder(trait_2) + ')</small>',
