@@ -1,32 +1,33 @@
+import _ from 'lodash'
 import { fetchJson } from './helpers'
 
 // https://wiki.guildwars2.com/wiki/API:Main
 const API_BASE_URL = 'https://api.guildwars2.com/v2/'
 
-export async function getProfessions() {
+export const getProfessions = _.memoize(async function () {
   return await fetchJson(API_BASE_URL + `professions?ids=all`)
-}
+})
 
-export async function getLegends() {
+export const getLegends = _.memoize(async function () {
   return await fetchJson(API_BASE_URL + `legends?ids=all`)
-}
+})
 
-export async function getPets() {
+export const getPets = _.memoize(async function () {
   return await fetchJson(API_BASE_URL + 'pets?ids=all')
-}
+})
 
-export async function getAmulets() {
+export const getAmulets = _.memoize(async function () {
   return await fetchJson(API_BASE_URL + 'pvp/amulets?ids=all')
-}
+})
 
-export async function getSkills(ids) {
+export const getSkills = _.memoize(async function (ids) {
   return await fetchJson(API_BASE_URL + `skills?ids=${ids.join(',')}`)
-}
+})
 
-export async function getSpecializations(ids) {
+export const getSpecializations = _.memoize(async function (ids) {
   return await fetchJson(API_BASE_URL + `specializations?ids=${ids.join(',')}`)
-}
+})
 
-export async function getTraits(ids) {
+export const getTraits = _.memoize(async function (ids) {
   return await fetchJson(API_BASE_URL + `traits?ids=${ids.join(',')}`)
-}
+})

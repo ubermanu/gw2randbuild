@@ -6,25 +6,11 @@ import { toArray } from './helpers'
 // Juvenile Jellyfishes
 const aquatic_pets = [21, 41, 42, 43]
 
-// Load professions once
-const professions = await api.getProfessions()
-
-// Get the legends as skills, so we can filter them by specialization
-let legends = await api.getLegends()
-legends = await api.getSkills(legends.map((legend) => legend.swap))
-
-// Load pets once (without aquatic ones)
-let pets = await api.getPets()
-pets = pets.filter((pet) => !aquatic_pets.includes(pet.id))
-
-// Load amulets once
-const amulets = await api.getAmulets()
-
 export async function generate() {
   /**
    * @type {{id,icon,specializations:[],weapons:[],skills:[]}}
    */
-  const professionData = _.sample(professions)
+  const professionData = _.sample(await api.getProfessions())
 
   const profession = professionData.id
   const specializations = await api.getSpecializations(
@@ -139,25 +125,29 @@ export async function generate() {
 
   let legend_1, legend_2
   if (profession === 'Revenant') {
-    const profession_legends = legends.filter(
+    // Get the legends as skills, so we can filter them by specialization
+    let legends = await api.getLegends()
+    legends = await api.getSkills(legends.map((legend) => legend.swap))
+    legends = legends.filter(
       (legend) =>
         legend.specialization === undefined ||
         legend.specialization === specialization_3.id
     )
 
-    legend_1 = _.sample(profession_legends)
-    legend_2 = _.sample(
-      profession_legends.filter((legend) => legend.id !== legend_1.id)
-    )
+    legend_1 = _.sample(legends)
+    legend_2 = _.sample(legends.filter((legend) => legend.id !== legend_1.id))
   }
 
+  // TODO: Remove the aquatic only pets
   let pet_1, pet_2
   if (profession === 'Ranger') {
+    let pets = await api.getPets()
+    pets = pets.filter((pet) => !aquatic_pets.includes(pet.id))
     pet_1 = _.sample(pets)
     pet_2 = _.sample(pets.filter((pet) => pet.id !== pet_1.id))
   }
 
-  let amulet = _.sample(amulets)
+  let amulet = _.sample(await api.getAmulets())
 
   return {
     profession: professionData,
