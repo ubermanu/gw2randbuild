@@ -22,9 +22,9 @@
 
 <main>
     <section class="container">
-        <h1 class="title">GW2 Rand Build</h1>
-        <button id="generate" class="button is-primary" on:click={handleGenerate}>GENERATE</button>
-        <button id="clear" class="button" on:click={handleClear}>CLEAR</button>
+        <h1 class="title">🎲 GW2 Build Randomizer</h1>
+        <button id="generate" class="button is-small is-primary" on:click={handleGenerate}>GENERATE</button>
+        <button id="clear" class="button is-small" on:click={handleClear}>CLEAR</button>
     </section>
     <hr>
     <section class="container builds">
