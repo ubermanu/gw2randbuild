@@ -1,29 +1,13 @@
-<html lang>
+<html lang="en">
   <head>
     <title>GW2 Random Build Generator</title>
   </head>
   <body>
-    <button id="generate" class="button">GENERATE</button>
-    <button id="clear" class="button">CLEAR</button>
-    <br />
-    <br />
-    <div id="output"></div>
     <script type="module">
-      import { generate, jsonToTable } from './src/main.js'
-      import './src/styles.css'
+      import App from './src/App.svelte'
 
-      const output = document.getElementById('output')
-      const generateButton = document.getElementById('generate')
-      const clearButton = document.getElementById('clear')
-
-      generateButton.addEventListener('click', async () => {
-        generateButton.disabled = true
-        output.innerHTML = jsonToTable(await generate()) + output.innerHTML
-        generateButton.disabled = false
-      })
-
-      clearButton.addEventListener('click', () => {
-        output.innerHTML = ''
+      const app = new App({
+        target: document.body
       })
     </script>
   </body>
