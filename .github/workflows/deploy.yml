@@ -25,7 +25,7 @@ jobs:
           version: 7.3.0
 
       - run: pnpm i
-      - run: pnpm build -- --base=/gw2randbuild/
+      - run: pnpm build --base=/gw2randbuild/
 
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
