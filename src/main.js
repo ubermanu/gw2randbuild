@@ -2,6 +2,10 @@ import _ from 'lodash'
 import * as api from './api'
 import { toArray } from './helpers'
 
+// Juvenile Shark
+// Juvenile Jellyfishes
+const aquatic_pets = [21, 41, 42, 43]
+
 export async function generate() {
   /**
    * @type {{id,icon,specializations:[],weapons:[],skills:[]}}
@@ -134,10 +138,10 @@ export async function generate() {
     legend_2 = _.sample(legends.filter((legend) => legend.id !== legend_1.id))
   }
 
-  // TODO: Remove the aquatic only pets
   let pet_1, pet_2
   if (profession === 'Ranger') {
-    const pets = await api.getPets()
+    let pets = await api.getPets()
+    pets = pets.filter((pet) => !aquatic_pets.includes(pet.id))
     pet_1 = _.sample(pets)
     pet_2 = _.sample(pets.filter((pet) => pet.id !== pet_1.id))
   }
