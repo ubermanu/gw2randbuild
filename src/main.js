@@ -26,6 +26,8 @@ export async function generate() {
     specializations
       .filter((s) => s.id !== specialization_1.id)
       .filter((s) => s.id !== specialization_2.id)
+    // Includes specs from extensions only
+    // .filter((s) => !core_specializations.includes(s))
   )
 
   let trait_1, trait_2, trait_3
@@ -53,7 +55,7 @@ export async function generate() {
     .filter(
       (weapon) =>
         weapon.specialization === undefined ||
-        weapon.specialization === specialization_1.id
+        weapon.specialization === specialization_3.id
     )
 
   let weapon_1, weapon_2, weapon_3, weapon_4
@@ -94,7 +96,7 @@ export async function generate() {
     skills = skills.filter(
       (skill) =>
         skill.specialization === undefined ||
-        skill.specialization === specialization_1.id
+        skill.specialization === specialization_3.id
     )
 
     heal_skill = _.sample(skills.filter((skill) => skill.type === 'Heal'))
@@ -125,7 +127,7 @@ export async function generate() {
     legends = legends.filter(
       (legend) =>
         legend.specialization === undefined ||
-        legend.specialization === specialization_1
+        legend.specialization === specialization_3.id
     )
 
     legend_1 = _.sample(legends)
