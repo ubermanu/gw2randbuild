@@ -41,7 +41,7 @@
 
 <style>
     main {
-        padding: 3rem 0;
+        padding: 3rem 1em;
     }
 
     .builds {
