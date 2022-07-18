@@ -20,9 +20,11 @@
 
 <main>
     <section class="container">
+        <h1 class="title">GW2 Rand Build</h1>
         <button id="generate" class="button" on:click={handleGenerate}>GENERATE</button>
         <button id="clear" class="button" on:click={handleClear}>CLEAR</button>
     </section>
+    <hr>
     <section class="container builds">
         {#each $builds as build}
             <BuildCard build={build}/>
@@ -32,7 +34,7 @@
 
 <style>
     main {
-        padding: 5rem;
+        padding: 3rem 0;
     }
 
     .builds {
