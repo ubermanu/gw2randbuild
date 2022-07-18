@@ -43,8 +43,8 @@ export async function getDetailedPets() {
   return await fetchJson('https://api.guildwars2.com/v2/pets?ids=all')
 }
 
-export async function getAmulets() {
-  return await fetchJson('https://api.guildwars2.com/v2/pvp/amulets')
+export async function getDetailedAmulets() {
+  return await fetchJson('https://api.guildwars2.com/v2/pvp/amulets?ids=all')
 }
 
 function toArray(obj) {
@@ -221,6 +221,8 @@ export async function generate() {
     pet_2 = _.sample(pets.filter((pet) => pet.id !== pet_1.id))
   }
 
+  let amulet = _.sample(await getDetailedAmulets())
+
   return {
     Profession: `<img src="${professionData.icon}" width="24" height="24" alt> <b>${profession}</b>`,
     'Specialization 1': specialization_1.name,
@@ -247,7 +249,8 @@ export async function generate() {
     'Legend 1': legend_1 ? legend_1.name : '',
     'Legend 2': legend_2 ? legend_2.name : '',
     'Pet 1': pet_1 ? pet_1.name : '',
-    'Pet 2': pet_2 ? pet_2.name : ''
+    'Pet 2': pet_2 ? pet_2.name : '',
+    Amulet: `<img src="${amulet.icon}" width="24" height="24" alt> <span>${amulet.name}</span>`
   }
 }
 
