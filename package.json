@@ -1,0 +1,21 @@
+{
+  "name": "gw2randbuild",
+  "version": "0.1.0",
+  "description": "An application to generate a random GW2 PvP build",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ubermanu",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "vite": "^3.0.1"
+  },
+  "dependencies": {
+    "bulma": "^0.9.4",
+    "lodash": "^4.17.21"
+  }
+}

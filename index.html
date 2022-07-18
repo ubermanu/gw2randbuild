@@ -1,53 +1,30 @@
 <html lang>
-<head>
+  <head>
     <title>GW2 Random Build Generator</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
-    <style>
-        body {
-            padding: 5rem;
-        }
+  </head>
+  <body>
+    <button id="generate" class="button">GENERATE</button>
+    <button id="clear" class="button">CLEAR</button>
+    <br />
+    <br />
+    <div id="output"></div>
+    <script type="module">
+      import { generate, jsonToTable } from './src/main.js'
+      import './src/styles.css'
 
-        #output {
-            display: flex;
-            overflow-x: auto;
-        }
+      const output = document.getElementById('output')
+      const generateButton = document.getElementById('generate')
+      const clearButton = document.getElementById('clear')
 
-        #output .table {
-            margin-right: 4rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            min-width: fit-content;
-        }
+      generateButton.addEventListener('click', async () => {
+        generateButton.disabled = true
+        output.innerHTML = jsonToTable(await generate()) + output.innerHTML
+        generateButton.disabled = false
+      })
 
-        #output .table th {
-            background: #f5f5f5;
-            font-weight: normal;
-        }
-    </style>
-</head>
-<body>
-<button id="generate" class="button">GENERATE</button>
-<button id="clear" class="button">CLEAR</button>
-<br>
-<br>
-<div id="output"></div>
-<script type="module">
-    import { generate, jsonToTable } from './main.js';
-
-    const output = document.getElementById('output');
-    const generateButton = document.getElementById('generate');
-    const clearButton = document.getElementById('clear');
-
-    generateButton.addEventListener('click', async () => {
-        generateButton.disabled = true;
-        output.innerHTML = jsonToTable(await generate()) + output.innerHTML;
-        generateButton.disabled = false;
-    });
-
-    clearButton.addEventListener('click', () => {
-        output.innerHTML = '';
-    });
-</script>
-</body>
+      clearButton.addEventListener('click', () => {
+        output.innerHTML = ''
+      })
+    </script>
+  </body>
 </html>
