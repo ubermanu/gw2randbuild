@@ -1,5 +1,7 @@
 <script>
     import 'bulma/css/bulma.min.css'
+    import 'bulma-prefers-dark/css/bulma-prefers-dark.min.css'
+
     import { generate } from './main.js'
     import BuildCard from './BuildCard.svelte'
     import { writable } from 'svelte/store'
@@ -21,7 +23,7 @@
 <main>
     <section class="container">
         <h1 class="title">GW2 Rand Build</h1>
-        <button id="generate" class="button" on:click={handleGenerate}>GENERATE</button>
+        <button id="generate" class="button is-primary" on:click={handleGenerate}>GENERATE</button>
         <button id="clear" class="button" on:click={handleClear}>CLEAR</button>
     </section>
     <hr>

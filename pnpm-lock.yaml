@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@sveltejs/vite-plugin-svelte': ^1.0.1
   bulma: ^0.9.4
+  bulma-prefers-dark: 0.1.0-beta.1
   lodash: ^4.17.21
   prettier: ^2.7.1
   svelte: ^3.49.0
@@ -10,6 +11,7 @@ specifiers:
 
 dependencies:
   bulma: 0.9.4
+  bulma-prefers-dark: 0.1.0-beta.1
   lodash: 4.17.21
   svelte: 3.49.0
 
@@ -50,6 +52,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /bulma-prefers-dark/0.1.0-beta.1:
+    resolution: {integrity: sha512-ti4sKxIIrTAvGtsYc9Rk66SUZSH/j63EU1hApQijQVlKFF0qBLGSb8E16HhI83KJaIeYP4aAHQv2tj0ara831A==}
+    dev: false
 
   /bulma/0.9.4:
     resolution: {integrity: sha512-86FlT5+1GrsgKbPLRRY7cGDg8fsJiP/jzTqXXVqiUZZ2aZT8uemEOHlU1CDU+TxklPEZ11HZNNWclRBBecP4CQ==}
