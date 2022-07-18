@@ -6,11 +6,12 @@
     import BuildCard from './BuildCard.svelte'
     import { writable } from 'svelte/store'
 
-    let builds = writable([]);
+    let builds = writable([])
+    let includeExpansions = true
 
     async function handleGenerate(ev) {
         ev.target.disabled = true
-        const build = await generate()
+        const build = await generate({ includeExpansions })
         builds.update(builds => [build, ...builds])
         ev.target.disabled = false
     }
@@ -25,6 +26,10 @@
         <h1 class="title">🎲 GW2 Build Randomizer</h1>
         <button id="generate" class="button is-small is-primary" on:click={handleGenerate}>GENERATE</button>
         <button id="clear" class="button is-small" on:click={handleClear}>CLEAR</button>
+        <label class="ml-4">
+            <input type="checkbox" bind:checked={includeExpansions}/>
+            <span>Include expansions</span>
+        </label>
     </section>
     <hr>
     <section class="container builds">

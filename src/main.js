@@ -6,7 +6,11 @@ import { toArray } from './helpers'
 // Juvenile Jellyfishes
 const aquatic_pets = [21, 41, 42, 43]
 
-export async function generate() {
+/**
+ * @param {{includeExpansions: boolean}} options
+ * @returns {Promise<any>}
+ */
+export async function generate(options = {}) {
   /**
    * @type {{id,icon,specializations:[],weapons:[],skills:[]}}
    */
@@ -26,12 +30,11 @@ export async function generate() {
   specialization_2 = _.sample(
     core_specializations.filter((s) => s.id !== specialization_1.id)
   )
+
   specialization_3 = _.sample(
-    specializations
+    (options.includeExpansions ? specializations : core_specializations)
       .filter((s) => s.id !== specialization_1.id)
       .filter((s) => s.id !== specialization_2.id)
-    // Includes specs from extensions only
-    // .filter((s) => !core_specializations.includes(s))
   )
 
   let trait_1, trait_2, trait_3
