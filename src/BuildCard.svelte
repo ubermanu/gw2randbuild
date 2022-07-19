@@ -86,11 +86,8 @@
         {#if build.pet_1}
             <hr>
             <div class="pets">
-                <img class="pet-icon" src={build.pet_1.icon} alt title={build.pet_1.name}/>
-                <img class="pet-icon" src={build.pet_2.icon} alt title={build.pet_2.name}/>
-                <div class="pet-icon"></div>
-                <div class="pet-icon"></div>
-                <div class="pet-icon"></div>
+                <div class="pet-name">{build.pet_1.name}</div>
+                <div class="pet-name">{build.pet_2.name}</div>
             </div>
         {/if}
         <hr>
@@ -154,7 +151,15 @@
         content: ' / ';
     }
 
-    .pets,
+    .pet-name {
+        font-weight: bold;
+        font-size: 0.9em;
+    }
+
+    .pet-name::before {
+        content: '🐕 - ';
+    }
+
     .legends,
     .skills {
         display: flex;
@@ -162,7 +167,6 @@
         width: 100%;
     }
 
-    .pet-icon,
     .legend-icon,
     .skill-icon {
         flex: 1;
