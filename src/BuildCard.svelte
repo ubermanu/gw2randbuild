@@ -86,8 +86,8 @@
         {#if build.pet_1}
             <hr>
             <div class="pets">
-                <div class="pet-name">{build.pet_1.name}</div>
-                <div class="pet-name">{build.pet_2.name}</div>
+                <div class="pet-name">{build.pet_1.name.replace(/^Juvenile /, '')}</div>
+                <div class="pet-name">{build.pet_2.name.replace(/^Juvenile /, '')}</div>
             </div>
         {/if}
         <hr>
