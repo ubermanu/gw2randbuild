@@ -124,8 +124,9 @@
     }
 
     .specialization-icon {
-        width: 2.4rem;
-        height: 2.4rem;
+        width: 20%;
+        max-width: 3.5rem;
+        height: auto;
         margin-right: 0.8rem;
         vertical-align: middle;
     }
